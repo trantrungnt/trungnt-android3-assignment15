@@ -8,3 +8,6 @@
 
 ##Yêu cầu kiến thức
 + Sử dụng Content Provider:  Content Provider dùng để truy cập database dùng chung. Thông qua các phương thức Thêm, sửa, xóa, truy vấn của Content Resolver, ta có thể truy cập dữ liệu chia sẻ 
++ [Kiến thức về Content Provider](https://developer.android.com/training/contacts-provider/index.html) 
+
+
