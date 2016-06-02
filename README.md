@@ -14,4 +14,7 @@
 + Bộ công cụ Android Studio 2.1
 + Máy ảo Genymotion sử dụng api min 17 và api max 23
 
+##Nguồn tham khảo
++ [Tham khảo cách thiết kế giao diện với Material Design](http://www.cssauthor.com/material-design-resources/#Mobile-App)
+
 
