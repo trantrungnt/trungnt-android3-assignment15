@@ -50,6 +50,8 @@
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:text="Insert"
+            android:textColor="@color/colorTextHint"
+            android:background="@color/colorBackgroundButton"
             android:layout_below="@id/imgPhone"
             android:layout_width="100dp"
             android:layout_height="wrap_content" />
@@ -64,6 +66,7 @@
         <TextView
             android:id="@+id/tvContacts"
             android:text="Contact List"
+            android:textColor="@color/colorTextHint"
             android:layout_below="@id/btnAdd"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
