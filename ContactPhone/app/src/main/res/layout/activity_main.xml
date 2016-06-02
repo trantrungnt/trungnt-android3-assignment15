@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +9,74 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="techkids.mad3.contactphone.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgName"
+            android:src="@drawable/account"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_marginLeft="15dp"
+            android:hint="Name"
+            android:textColorHint="@color/colorTextHint"
+            android:layout_toRightOf="@id/imgName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imgPhone"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/imgName"
+            android:src="@drawable/phone"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:hint="Phone"
+            android:inputType="number"
+            android:textColorHint="@color/colorTextHint"
+            android:layout_below="@id/imgName"
+            android:layout_toRightOf="@id/imgPhone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Insert"
+            android:layout_below="@id/imgPhone"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imgContacts"
+            android:src="@drawable/contacts"
+            android:layout_below="@id/btnAdd"
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:id="@+id/tvContacts"
+            android:text="Contact List"
+            android:layout_below="@id/btnAdd"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="25sp"
+            android:layout_toRightOf="@id/imgContacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ListView
+            android:id="@+id/lvContacts"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/imgContacts"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"></ListView>
+    </RelativeLayout>
+
+</ScrollView>
