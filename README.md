@@ -24,4 +24,6 @@
 + [Contact Provider](http://wptrafficanalyzer.in/blog/android-contacts-content-provider-retrieving-and-listing-contacts-in-listview-example/)
 + [Content Provider Tutorial](https://newcircle.com/s/post/1375/android_content_provider_tutorial)
 + [Contact Content Providers in Android](http://pulse7.net/android/contacts-content-provider-android/)
++ [Insert data into Content Provider then Display it in a listview](http://stackoverflow.com/questions/5386509/insert-data-into-content-provider-then-display-it-in-a-listview) 
+
 
