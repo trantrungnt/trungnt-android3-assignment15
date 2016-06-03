@@ -27,5 +27,6 @@
 + [Insert data into Content Provider then Display it in a listview](http://stackoverflow.com/questions/5386509/insert-data-into-content-provider-then-display-it-in-a-listview) 
 + [Add Contacts using Contacts Provider in Android example ](http://wptrafficanalyzer.in/blog/adding-contacts-programatically-using-contacts-provider-in-android-example/)
 + [Day 15 Content Provider using Contacts Api](http://www.slideshare.net/androidstream/day-15-content-provider-using-contacts-api)
++ [Insert - Update - Delete - View Contacts](http://androiddevelopement.blogspot.com/2011/07/insert-update-delete-view-contacts-in.html)
 
 
