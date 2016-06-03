@@ -19,3 +19,4 @@
 + [Iconic Material Desgin](http://codecanyon.net/item/ionic-material-design/12833673)
 + [Google Material Design](https://www.google.com/design/spec/components/buttons.html#buttons-dropdown-buttons)
 + [Material Icon](https://materialdesignicons.com/icon/)
++ [Content Provider](http://www.tutorialspoint.com/android/android_content_providers.htm)
