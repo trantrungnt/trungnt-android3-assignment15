@@ -22,3 +22,5 @@
 + [Content Provider](http://www.tutorialspoint.com/android/android_content_providers.htm)
 + [Loading contacts with Content Providers](https://guides.codepath.com/android/Loading-Contacts-with-Content-Providers)
 + [Contact Provider](http://wptrafficanalyzer.in/blog/android-contacts-content-provider-retrieving-and-listing-contacts-in-listview-example/)
++ [Content Provider Tutorial](https://newcircle.com/s/post/1375/android_content_provider_tutorial)
+
