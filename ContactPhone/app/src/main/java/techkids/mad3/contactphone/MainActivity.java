@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cursor cr = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
         if (cr.moveToPosition(position))
         {
-            displayNameDialog = cr.getString(cr.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            displayNameDialog = cr.getString(cr.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY));
             tvDisplayName.setText(displayNameDialog);
             Log.d("query", displayNameDialog);
         }
@@ -147,11 +147,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Cursor cursorPhone = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                 new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER},
-                null,
-                null,
+                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ? AND " +
+                        ContactsContract.CommonDataKinds.Phone.TYPE + " = " +
+                        ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE,
+                new String[]{contactID},
                 null);
 
-        if (cursorPhone.moveToPosition(position)) {
+        if (cursorPhone.moveToFirst()) {
             phoneDialog = cursorPhone.getString(cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
             tvDisplayPhone.setText(phoneDialog);
         }
@@ -202,23 +204,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         builder.show();
     }
-
-    public static Cursor getContactCursor(ContentResolver contactHelper, String name) {
-        String[] projection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY, ContactsContract.CommonDataKinds.Phone.NUMBER };
-        Cursor cur = null;
-        try {
-            if (name != null && !name.equals("")) {
-                cur = contactHelper.query (ContactsContract.CommonDataKinds.Phone.CONTENT_URI, projection, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY + " like \"" + name + "\"", null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
-            }
-
-            cur.moveToFirst();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return cur;
-    }
-
-
 
 }
