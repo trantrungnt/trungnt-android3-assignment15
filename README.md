@@ -34,5 +34,5 @@
 + [Insert new Contact in Android code example](http://techblogon.com/insert-new-contact-in-android-code-example/)
 + [Add - Delete - Retrieving Contacts](http://www.theappguruz.com/blog/android-adding-deleting-retrieving-contacts)
 + [Content Providers](https://gist.github.com/evandrix/7058235)
-+ Retrofit Library
++ [Retrofit Library](http://square.github.io/retrofit/)
 
