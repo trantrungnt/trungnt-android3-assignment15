@@ -1,6 +1,7 @@
 package techkids.mad3.contactphone;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
@@ -8,6 +9,7 @@ import android.content.ContentProviderResult;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Loader;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
@@ -19,6 +21,7 @@ import android.provider.ContactsContract;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -73,10 +76,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (id==R.id.btnAdd)
         {
-            //insertContact(displayName, phone, ctx);
-            insertContact(cr, displayName, phone);
-            loadListContact();
-            Log.d("Click me", "ok");
+            if(TextUtils.isEmpty(displayName) || TextUtils.isEmpty(phone)) {
+                    showAlertDialog(Helper.TITLE_DIALOG, Helper.CONTENT_DIALOG);
+            }
+            else
+                {
+                    //insertContact(displayName, phone, ctx);
+                    insertContact(cr, displayName, phone);
+                    loadListContact();
+                    Log.d("Click me", "ok");
+                }
         }
     }
 
@@ -119,6 +128,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
 
         }
+    }
+
+
+    private void showAlertDialog (String titleDialog, String contentDialog)
+    {
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+        builder.setTitle(titleDialog);
+        builder.setMessage(contentDialog);
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.show();
     }
 
 }
