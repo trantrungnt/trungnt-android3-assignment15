@@ -28,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ContentResolver cr;
     private String displayName, phone;
     private Context ctx;
-    private ContentResolver contactAdder;
+    private TextView tvName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        tvName = (TextView) view.findViewById(R.id.tvContactItem);
+        Log.d("Name", tvName.getText().toString());
     }
 
     //Phuong thuc them moi du lieu vao Contact Provider
