@@ -29,5 +29,6 @@
 + [Day 15 Content Provider using Contacts Api](http://www.slideshare.net/androidstream/day-15-content-provider-using-contacts-api)
 + [Insert - Update - Delete - View Contacts](http://androiddevelopement.blogspot.com/2011/07/insert-update-delete-view-contacts-in.html)
 + [Insert new Contact in Android code example](http://techblogon.com/insert-new-contact-in-android-code-example/)
++ [Add - Delete - Retrieving Contacts](http://www.theappguruz.com/blog/android-adding-deleting-retrieving-contacts)
 
 
