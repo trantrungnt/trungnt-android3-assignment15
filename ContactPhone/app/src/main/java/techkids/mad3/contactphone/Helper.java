@@ -5,5 +5,6 @@ package techkids.mad3.contactphone;
  */
 public class Helper {
     public static String TITLE_DIALOG = "WARNING";
-    public static String CONTENT_DIALOG = "Your information is empty. You need to type them";
+    public static String CONTENT_DIALOG = "Your information is empty. You need to type them!";
+    public static String TITLE_DIALOG_DETAIL = "DETAIL CONTACT";
 }

@@ -2,6 +2,7 @@ package techkids.mad3.contactphone;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.LoaderManager;
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;
@@ -39,10 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SimpleCursorAdapter mCursorAdapter;
     private ArrayList<ContentProviderOperation> ops;
     private ContentResolver cr;
-    private String displayName, phone;
+    private String displayName, phone, displayNameDialog, phoneDialog;
     private Context ctx;
-    private TextView tvName;
-
+    private TextView tvName, tvDisplayName, tvDisplayPhone;
+    private Dialog dialogDetail;
+    private Button btnOK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         tvName = (TextView) view.findViewById(R.id.tvContactItem);
         Log.d("Name", tvName.getText().toString());
+
+        dialogDetail = new Dialog((Context)this);
+        dialogDetail.setContentView(R.layout.detail_alert);
+        dialogDetail.setTitle(Helper.TITLE_DIALOG_DETAIL);
+        tvDisplayName = (TextView) dialogDetail.findViewById(R.id.tvDisplayName);
+        tvDisplayName.setText(tvName.getText().toString());
+        btnOK = (Button) dialogDetail.findViewById(R.id.btnOK);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogDetail.dismiss();
+            }
+        });
+        dialogDetail.show();
     }
 
     //Phuong thuc them moi du lieu vao Contact Provider
