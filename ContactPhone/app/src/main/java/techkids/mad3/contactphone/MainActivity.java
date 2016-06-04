@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvName, tvDisplayName, tvDisplayPhone;
     private Dialog dialogDetail;
     private Button btnOK;
+    private String contactID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Read Contacts
         Cursor c = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 new String[] { ContactsContract.Contacts._ID,
-                        ContactsContract.Contacts.DISPLAY_NAME_PRIMARY }, null, null,
+                        ContactsContract.Contacts.DISPLAY_NAME_PRIMARY}, null, null,
                 null);
 
         // Attached with cursor with Adapter
@@ -116,14 +118,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        tvName = (TextView) view.findViewById(R.id.tvContactItem);
-        Log.d("Name", tvName.getText().toString());
-
         dialogDetail = new Dialog((Context)this);
         dialogDetail.setContentView(R.layout.detail_alert);
         dialogDetail.setTitle(Helper.TITLE_DIALOG_DETAIL);
         tvDisplayName = (TextView) dialogDetail.findViewById(R.id.tvDisplayName);
-        tvDisplayName.setText(tvName.getText().toString());
+        tvDisplayPhone = (TextView) dialogDetail.findViewById(R.id.tvDisplayPhone);
+
+        Cursor cursorID = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
+                new String[]{ContactsContract.Contacts._ID},
+                null, null, null);
+
+        if (cursorID.moveToPosition(position)) {
+
+            contactID = cursorID.getString(cursorID.getColumnIndex(ContactsContract.Contacts._ID));
+            Log.d("query", contactID);
+        }
+
+        cursorID.close();
+
+        Cursor cr = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+        if (cr.moveToPosition(position))
+        {
+            displayNameDialog = cr.getString(cr.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            tvDisplayName.setText(displayNameDialog);
+            Log.d("query", displayNameDialog);
+        }
+        cr.close();
+
+        Cursor cursorPhone = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER},
+                null,
+                null,
+                null);
+
+        if (cursorPhone.moveToPosition(position)) {
+            phoneDialog = cursorPhone.getString(cursorPhone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+            tvDisplayPhone.setText(phoneDialog);
+        }
+        cursorPhone.close();
+        Log.d("query", "Contact Phone Number: " + phoneDialog);
+
+
+
         btnOK = (Button) dialogDetail.findViewById(R.id.btnOK);
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,5 +202,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         builder.show();
     }
+
+    public static Cursor getContactCursor(ContentResolver contactHelper, String name) {
+        String[] projection = { ContactsContract.CommonDataKinds.Phone._ID, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY, ContactsContract.CommonDataKinds.Phone.NUMBER };
+        Cursor cur = null;
+        try {
+            if (name != null && !name.equals("")) {
+                cur = contactHelper.query (ContactsContract.CommonDataKinds.Phone.CONTENT_URI, projection, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_PRIMARY + " like \"" + name + "\"", null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
+            }
+
+            cur.moveToFirst();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cur;
+    }
+
+
 
 }
