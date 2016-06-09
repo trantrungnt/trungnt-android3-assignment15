@@ -9,6 +9,14 @@
 ##Yêu cầu kiến thức
 + Sử dụng Content Provider:  Content Provider dùng để truy cập database dùng chung. Thông qua các phương thức Thêm, sửa, xóa, truy vấn của Content Resolver, ta có thể truy cập dữ liệu chia sẻ 
 + [Kiến thức về Content Provider](https://developer.android.com/training/contacts-provider/index.html) 
+```
+ContentProviderOperation class, 
+ContentResolver.applyBatch ===> mo ket noi datbase 1 lan va  thao tac duoc nhieu: insert, update, delete duoc dong thoi va cho duoc nhieu bang
+
+bunlkInsert() ===> thao tac nhanh hon ==> chi thao tac duoc 1 bang
+
+Asynchronous queries => khong dong bo
+```
 
 ##Demo chương trình
 + [Xem tại đây](https://youtu.be/DKaGY6uNY2A)
